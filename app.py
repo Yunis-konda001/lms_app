@@ -65,7 +65,7 @@ class LivestockManagementSystem:
     
     @staticmethod
     def login():
-        """Log in an existing user."""
+        """Log in an existing user using phone number and password."""
         LivestockManagementSystem.print_header("Login")
         phone_number = input("Phone Number: ")
         password = getpass.getpass("Password: ")
