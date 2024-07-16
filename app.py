@@ -80,21 +80,21 @@ class LivestockManagementSystem:
         return None
 
         @staticmethod
-    def display_livestock_options():
-        """Display livestock options and get the user's choice."""
-        print("Please select a type of livestock:")
-        for index, livestock in enumerate(VALID_LIVESTOCK_TYPES, start=1):
-            print(f"{index}. {livestock.capitalize()}")
-        print(f"{len(VALID_LIVESTOCK_TYPES) + 1}. Cancel")
-        choice = int(input("Enter the number corresponding to your choice: "))
-        if 1 <= choice <= len(VALID_LIVESTOCK_TYPES):
-            return VALID_LIVESTOCK_TYPES[choice - 1]
-        elif choice == len(VALID_LIVESTOCK_TYPES) + 1:
-            return None
-        else:
-            print("\nInvalid choice! Please try again.")
-            return LivestockManagementSystem.display_livestock_options()
-    
+        def display_livestock_options():
+            """Display livestock options and get the user's choice."""
+            print("Please select a type of livestock:")
+            for index, livestock in enumerate(VALID_LIVESTOCK_TYPES, start=1):
+                print(f"{index}. {livestock.capitalize()}")
+            print(f"{len(VALID_LIVESTOCK_TYPES) + 1}. Cancel")
+            choice = int(input("Enter the number corresponding to your choice: "))
+            if 1 <= choice <= len(VALID_LIVESTOCK_TYPES):
+                return VALID_LIVESTOCK_TYPES[choice - 1]
+            elif choice == len(VALID_LIVESTOCK_TYPES) + 1:
+                return None
+            else:
+                print("\nInvalid choice! Please try again.")
+                return LivestockManagementSystem.display_livestock_options()
+        
     def add_livestock_data(self, phone_number):
         """Add livestock data for a user."""
         self.print_header("Adding Livestock Data")
