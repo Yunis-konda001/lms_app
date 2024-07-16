@@ -7,3 +7,39 @@ import getpass
 ACCOUNTS_FILE = 'accounts.csv'
 LIVESTOCK_FILE = 'livestock.csv'
 VALID_LIVESTOCK_TYPES = ['cows', 'sheep', 'goats', 'chickens', 'fish', 'rabbits', 'pigs', 'turkeys', 'snails', 'rams']
+
+class LivestockManagementSystem:
+    """
+    A class to manage livestock data and user accounts.
+    """
+
+    def __init__(self):
+        self.ensure_files_exist()
+
+    def ensure_files_exist(self):
+        """Ensure the accounts and livestock files exist."""
+        if not os.path.exists(ACCOUNTS_FILE):
+            with open(ACCOUNTS_FILE, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['Phone Number', 'Password', 'Full Name', 'Address'])
+
+        if not os.path.exists(LIVESTOCK_FILE):
+            with open(LIVESTOCK_FILE, mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerow(['Phone Number', 'Livestock Type', 'Quantity'])
+
+    @staticmethod
+    def print_header(title):
+        """Print a formatted header."""
+        print("\n" + "."*50)
+        print(f"{title.center(50)}")
+        print("."*50 + "\n")
+
+    @staticmethod
+    def print_menu(options):
+        """Print a formatted menu."""
+        print("\n" + "."*50)
+        for option in options:
+            print(option)
+        print("."*50 + "\n")
+
