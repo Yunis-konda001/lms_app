@@ -154,7 +154,7 @@ class LivestockManagementSystem:
             if not data_found:
                 print("\nNo livestock data found!")
 
-        def check_loan_eligibility(self, phone_number):
+    def check_loan_eligibility(self, phone_number):
         """Check loan eligibility for a user based on livestock data."""
         self.print_header("Checking Loan Eligibility")
         livestock_data = {}
