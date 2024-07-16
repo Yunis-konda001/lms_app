@@ -240,3 +240,25 @@ class LivestockManagementSystem:
             writer.writerows(updated_rows)
             print("\nLivestock data deleted successfully!")
 
+    
+    def main_menu(self):
+        """Display the main menu and handle user choices."""
+        while True:
+            self.print_header("Welcome to the Livestock Management System")
+            self.print_menu([
+                "1. Create an account",
+                "2. Login",
+                "3. Exit"
+            ])
+            choice = input("Enter your choice: ")
+
+            if choice == '1':
+                self.create_account()
+            elif choice == '2':
+                phone_number = self.login()
+                if phone_number:
+                    self.user_menu(phone_number)
+            elif choice == '3':
+                break
+            else:
+                print("\nInvalid choice! Please try again.")
