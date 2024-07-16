@@ -212,3 +212,31 @@ class LivestockManagementSystem:
             writer.writerows(updated_rows)
             print("\nAccount deleted successfully!")
 
+    def delete_livestock_data(self, phone_number):
+        """Delete livestock data for a user."""
+        self.print_header("Deleting Livestock Data")
+        livestock_type = self.display_livestock_options()
+        if livestock_type is None:
+            print("\nAction cancelled. Returning to main menu.")
+            return
+
+        updated_rows = []
+        found = False
+
+        with open(LIVESTOCK_FILE, mode='r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] == phone_number and row[1] == livestock_type:
+                    found = True
+                else:
+                    updated_rows.append(row)
+
+        if not found:
+            print("\nLivestock type not found!")
+            return
+
+        with open(LIVESTOCK_FILE, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows(updated_rows)
+            print("\nLivestock data deleted successfully!")
+
