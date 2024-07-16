@@ -94,4 +94,20 @@ class LivestockManagementSystem:
         else:
             print("\nInvalid choice! Please try again.")
             return LivestockManagementSystem.display_livestock_options()
+    
+    def add_livestock_data(self, phone_number):
+        """Add livestock data for a user."""
+        self.print_header("Adding Livestock Data")
+        livestock_type = self.display_livestock_options()
+        if livestock_type is None:
+            print("\nAction cancelled. Returning to main menu.")
+            return
+
+        quantity = input("Quantity: ")
+
+        with open(LIVESTOCK_FILE, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([phone_number, livestock_type, quantity])
+            print("\nLivestock data added successfully!")
+
 
