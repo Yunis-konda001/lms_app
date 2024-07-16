@@ -45,7 +45,7 @@ class LivestockManagementSystem:
     
     @staticmethod
     def create_account():
-        """Create a new user account."""
+        """Create a new user account using full name, phone number, address and password."""
         LivestockManagementSystem.print_header("Create an Account")
         full_name = input("Full Name: ")
         phone_number = input("Phone Number: ")
