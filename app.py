@@ -263,7 +263,7 @@ class LivestockManagementSystem:
             else:
                 print("\nInvalid choice! Please try again.")
 
-     def user_menu(self, phone_number):
+    def user_menu(self, phone_number):
         """Display the user menu and handle user choices."""
         while True:
             self.print_header("Main Menu")
