@@ -62,4 +62,20 @@ class LivestockManagementSystem:
             writer.writerow([phone_number, password, full_name, address])
             print("\nAccount created successfully!")
             return True
+    
+    @staticmethod
+    def login():
+        """Log in an existing user."""
+        LivestockManagementSystem.print_header("Login")
+        phone_number = input("Phone Number: ")
+        password = getpass.getpass("Password: ")
+
+        with open(ACCOUNTS_FILE, mode='r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] == phone_number and row[1] == password:
+                    print("\nLogin successful!")
+                    return phone_number
+        print("\nInvalid phone number or password!")
+        return None
 
