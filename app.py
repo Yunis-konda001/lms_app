@@ -190,3 +190,25 @@ class LivestockManagementSystem:
                 if current_count < count:
                     print(f" - {livestock.capitalize()}: You have {current_count}, but you need at least {count}.")
 
+    def delete_account(self, phone_number):
+        """Delete a user's account."""
+        self.print_header("Deleting Account")
+        confirmation = input("Are you sure you want to delete your account? (yes/no): ").lower()
+
+        if confirmation != 'yes':
+            print("\nAccount deletion cancelled.")
+            return
+
+        updated_rows = []
+
+        with open(ACCOUNTS_FILE, mode='r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] != phone_number:
+                    updated_rows.append(row)
+
+        with open(ACCOUNTS_FILE, mode='w', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerows(updated_rows)
+            print("\nAccount deleted successfully!")
+
