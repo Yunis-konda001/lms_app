@@ -154,3 +154,39 @@ class LivestockManagementSystem:
             if not data_found:
                 print("\nNo livestock data found!")
 
+        def check_loan_eligibility(self, phone_number):
+        """Check loan eligibility for a user based on livestock data."""
+        self.print_header("Checking Loan Eligibility")
+        livestock_data = {}
+
+        with open(LIVESTOCK_FILE, mode='r') as file:
+            reader = csv.reader(file)
+            for row in reader:
+                if row[0] == phone_number:
+                    livestock_data[row[1]] = int(row[2])
+
+        # Loan eligibility criteria
+        eligibility_conditions = {
+            'cows': 10,
+            'chickens': 100,
+            'goats': 50,
+            'fish': 500,
+            'rabbits': 80,
+            'pigs': 50,
+            'turkeys': 100,
+            'snails': 500,
+            'rams': 20
+        }
+
+        eligible = any(livestock_data.get(livestock, 0) >= count for livestock, count in eligibility_conditions.items())
+
+        if eligible:
+            print("\nYou are eligible for a loan!")
+        else:
+            print("\nYou are not eligible for a loan.")
+            print("\nHere's what you need to be eligible for a loan:")
+            for livestock, count in eligibility_conditions.items():
+                current_count = livestock_data.get(livestock, 0)
+                if current_count < count:
+                    print(f" - {livestock.capitalize()}: You have {current_count}, but you need at least {count}.")
+
