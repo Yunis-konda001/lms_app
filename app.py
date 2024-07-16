@@ -42,4 +42,24 @@ class LivestockManagementSystem:
         for option in options:
             print(option)
         print("."*50 + "\n")
+    
+    @staticmethod
+    def create_account():
+        """Create a new user account."""
+        LivestockManagementSystem.print_header("Create an Account")
+        full_name = input("Full Name: ")
+        phone_number = input("Phone Number: ")
+        address = input("Address: ")
+        password = getpass.getpass("Password: ")
+        confirm_password = getpass.getpass("Confirm Password: ")
+
+        if password != confirm_password:
+            print("\nPasswords do not match! Please try again.")
+            return False
+
+        with open(ACCOUNTS_FILE, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([phone_number, password, full_name, address])
+            print("\nAccount created successfully!")
+            return True
 
