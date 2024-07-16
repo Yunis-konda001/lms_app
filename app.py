@@ -262,3 +262,40 @@ class LivestockManagementSystem:
                 break
             else:
                 print("\nInvalid choice! Please try again.")
+
+     def user_menu(self, phone_number):
+        """Display the user menu and handle user choices."""
+        while True:
+            self.print_header("Main Menu")
+            self.print_menu([
+                "1. Add livestock data",
+                "2. Update livestock data",
+                "3. View livestock data",
+                "4. Check loan eligibility",
+                "5. Delete livestock data",
+                "6. Delete account",
+                "7. Exit"
+            ])
+            menu_choice = input("Enter your choice: ")
+
+            if menu_choice == '1':
+                self.add_livestock_data(phone_number)
+            elif menu_choice == '2':
+                self.update_livestock_data(phone_number)
+            elif menu_choice == '3':
+                self.view_livestock_data(phone_number)
+            elif menu_choice == '4':
+                self.check_loan_eligibility(phone_number)
+            elif menu_choice == '5':
+                self.delete_livestock_data(phone_number)
+            elif menu_choice == '6':
+                self.delete_account(phone_number)
+                break
+            elif menu_choice == '7':
+                break
+            else:
+                print("\nInvalid choice! Please try again.")
+
+if __name__ == "__main__":
+    system = LivestockManagementSystem()
+    system.main_menu()           
