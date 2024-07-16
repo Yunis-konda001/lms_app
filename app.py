@@ -141,3 +141,16 @@ class LivestockManagementSystem:
             writer.writerows(updated_rows)
             print("\nLivestock data updated successfully!")
 
+    def view_livestock_data(self, phone_number):
+        """View livestock data for a user."""
+        self.print_header("Viewing Livestock Data")
+        with open(LIVESTOCK_FILE, mode='r') as file:
+            reader = csv.reader(file)
+            data_found = False
+            for row in reader:
+                if row[0] == phone_number:
+                    print(f"\nLivestock Type: {row[1].capitalize()}, Quantity: {row[2]}")
+                    data_found = True
+            if not data_found:
+                print("\nNo livestock data found!")
+
