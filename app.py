@@ -181,7 +181,7 @@ class LivestockManagementSystem:
         eligible = any(livestock_data.get(livestock, 0) >= count for livestock, count in eligibility_conditions.items())
 
         if eligible:
-            print("\nYou are eligible for a loan!")
+            print("\nCongratulations!!! You are eligible for a loan!\nGo to any BK branch near you to apply for one.")
         else:
             print("\nYou are not eligible for a loan.")
             print("\nHere's what you need to be eligible for a loan:")
