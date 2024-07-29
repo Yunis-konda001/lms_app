@@ -8,10 +8,10 @@ class LivestockManagementSystem:
 
     def __init__(self):
         self.conn = mysql.connector.connect(
-            host="localhost",
-            user="farmadmin",
-            password="1200##password",
-            database="livestock_management"
+            host="sql10.freesqldatabase.com",
+            user="sql10722874",
+            password="uVcdncbub8",
+            database="sql10722874"
         )
         self.cursor = self.conn.cursor()
         self.create_tables()
