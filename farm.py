@@ -170,9 +170,9 @@ class LivestockManagementSystem:
                 lacking.append((livestock, count - livestock_data.get(livestock, 0)))
 
         if eligible:
-            print("\nYou are eligible for a loan!")
+            print("\nCongratulations! You are eligible for a loan.\nVisit any BK branch near you to get one.")
         else:
-            print("\nYou are not eligible for a loan!")
+            print("\nSorry! You are not eligible for a loan.")
             for livestock, shortfall in lacking:
                 print(f"You need {shortfall} more {livestock} to be eligible for a loan.")
 
